@@ -1,7 +1,10 @@
 project "SimpleIni"
-    kind "StaticLib"
-    language "C"
-  
+	kind "StaticLib"
+	language "C"
+	
+	characterset "Unicode"
+	vectorextensions "AVX"
+
 	staticruntime "On"
 
 	targetdir ("../../../bin/" .. outputDir .. "/%{prj.name}")
@@ -13,14 +16,12 @@ project "SimpleIni"
 		"*.c",
 		"*.h",
 		"*.hpp"
-    }
-    
+	}
+
+	defines 
+	{ 
+					"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	filter "system:windows"
-        systemversion "latest"
-        
-		defines 
-		{ 
-            "_CRT_SECURE_NO_WARNINGS"
-		}
-    
-    filter { "system:windows", "configurations:Release" }
+	systemversion "latest"
